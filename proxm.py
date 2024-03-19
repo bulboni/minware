@@ -8,11 +8,15 @@ def handle_client(client_socket, remote_host, remote_port):
     
     def forward(src, dst):
         while True:
-            data = src.recv(8192)  # Mengatur ukuran buffer menjadi 4096 byte
-            if not data:
-                print("[*] Connection closed by client")
+            try:
+                data = src.recv(8192)  # Mengatur ukuran buffer menjadi 4096 byte
+                if not data:
+                    print("[*] Connection closed by client")
+                    break
+                dst.send(data)
+            except BrokenPipeError:
+                print("[*] Broken pipe error occurred")
                 break
-            dst.send(data)
     
     client_thread = threading.Thread(target=forward, args=(client_socket, remote_socket))
     remote_thread = threading.Thread(target=forward, args=(remote_socket, client_socket))
