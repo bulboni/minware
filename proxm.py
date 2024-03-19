@@ -8,7 +8,7 @@ def handle_client(client_socket, remote_host, remote_port):
     
     def forward(src, dst):
         while True:
-            data = src.recv(4096)
+            data = src.recv()  # Tanpa memberikan ukuran buffer
             if not data:
                 print("[*] Connection closed by client")
                 break
@@ -30,7 +30,7 @@ def handle_client(client_socket, remote_host, remote_port):
 
 def main():
     local_host = "0.0.0.0"  # Bind to all available interfaces
-    local_port = 4000  # Change to desired local port
+    local_port = 280  # Change to desired local port
     remote_host = "pool.hashvault.pro"  # Change to target server address
     remote_port = 80  # Change to target server port
     
