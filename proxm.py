@@ -10,6 +10,7 @@ def handle_client(client_socket, remote_host, remote_port):
         while True:
             data = src.recv(4096)
             if not data:
+                print("[*] Connection closed by client")
                 break
             dst.send(data)
     
@@ -18,6 +19,14 @@ def handle_client(client_socket, remote_host, remote_port):
     
     client_thread.start()
     remote_thread.start()
+    
+    # Wait for the threads to finish
+    client_thread.join()
+    remote_thread.join()
+    
+    # Close sockets after threads are finished
+    client_socket.close()
+    remote_socket.close()
 
 def main():
     local_host = "0.0.0.0"  # Bind to all available interfaces
