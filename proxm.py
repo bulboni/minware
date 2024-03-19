@@ -8,7 +8,7 @@ def handle_client(client_socket, remote_host, remote_port):
     
     def forward(src, dst):
         while True:
-            data = src.recv()  # Tanpa memberikan ukuran buffer
+            data = src.recv(8192)  # Mengatur ukuran buffer menjadi 4096 byte
             if not data:
                 print("[*] Connection closed by client")
                 break
