@@ -18,3 +18,6 @@ Login Docker : zg212 : ADang_999
  4. run rdp windeep
  5. 
 
+===========>
+docker miner
+1. docker run --name pacul zg212/pacul:v1
