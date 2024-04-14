@@ -1,7 +1,11 @@
+import os
 import pyautogui
 
-# Inisialisasi pyautogui dengan menonaktifkan penggunaan X11
-pyautogui.init(use_xauth=False)
+# Set environment variable DISPLAY to None to disable X11
+os.environ['DISPLAY'] = ':0'
+
+# Inisialisasi pyautogui
+pyautogui.init()
 
 # Fungsi untuk membuat mouse bergerak ke posisi tertentu
 def move_mouse(x, y):
