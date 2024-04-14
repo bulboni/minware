@@ -1,5 +1,7 @@
 import pyautogui
-import time
+
+# Inisialisasi pyautogui dengan menonaktifkan penggunaan X11
+pyautogui.init(use_xauth=False)
 
 # Fungsi untuk membuat mouse bergerak ke posisi tertentu
 def move_mouse(x, y):
@@ -21,15 +23,12 @@ def drag_mouse(x, y):
 if __name__ == "__main__":
     # Menggerakkan mouse ke koordinat (100, 100)
     move_mouse(100, 100)
-    time.sleep(1)
 
     # Klik mouse di posisi saat ini
     click_mouse()
-    time.sleep(1)
 
     # Menggeser mouse ke koordinat (200, 200)
     drag_mouse(200, 200)
-    time.sleep(1)
 
     # Menggerakkan mouse secara relatif sebesar 50 piksel ke kanan dan 50 piksel ke bawah dari posisi saat ini
     move_mouse_relative(50, 50)
